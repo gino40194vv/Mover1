@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core theme colors -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white1">#1C1C1C</color>
+
+    <!-- Material colors -->
+    <color name="material_orange">#F53D1CFB</color>
+    <color name="material_orange_dark">#FF9D6B</color>
+    <color name="material_blue">#EBB80C26</color>
+    <color name="material_blue_dark">#FF4B6B</color>
+    <color name="material_blueRO">#FF6B82</color>
+    <color name="material_red">#FF5252</color>
+    <color name="material_green">#69F0AE</color>
+    <color name="semi_transparent_black">#80000000</color>
+    <color name="material_blue_giorni">#FF6B82</color>
+
+    <!-- Activity colors -->
+    <color name="colorCamminare">#FF7043</color>
+    <color name="colorCorrere">#FF5252</color>
+    <color name="colorGuidare">#FF7043</color>
+    <color name="colorSedersi">#FF4081</color>
+    <color name="colorBici">#FFB74D</color>
+    <color name="transparent_b">#F5121116</color>
+
+
+    <!-- UI elements -->
+    <color name="defaultButtonColor">#2C2C2C</color>
+    <color name="transparent_black">#80000000</color>
+    <color name="rossino">#37FF7070</color>
+    <color name="track_color">#E57373</color>
+    <color name="thumb_color">#FF8A80</color>
+
+    <!-- Background colors -->
+    <color name="nerino">#222222</color>
+    <color name="nero_sfondo">#1E1E1E</color>
+    <color name="card_storico_backgroung">#302626</color>
+    <color name="red">#FF5252</color>
+    <color name="text_color_default">@color/material_blue</color>
+    <color name="material_blue2">#A5A90025</color>
+
+    <!-- Command center colors -->
+    <color name="command_center_color">#FF5252</color>
+    <color name="colore_Storico_back">#1F1F1F</color>
+    <color name="colore_Storico_back_to">#E6424242</color>
+    <color name="command_center_color1">#D9A2061E</color>
+
+    <!-- FAB colors -->
+    <color name="colore_fab">#BA3E3E</color>
+    <color name="colore_fab1">#C2424242</color>
+    <color name="colore_fab2">#E43E3331</color>
+    <color name="colore_fab3">#CD958383</color>
+    <color name="originalBackgroundColor">#37FF7070</color>
+    <color name="background_giorno">#202020</color>
+    <color name="background_arancione">#ABFF5722</color>
+    <color name="background_arancione_dark">#BAE64A19</color>
+    <color name="background_trofei">#2D2D2D</color>
+
+    <!-- Calendar colors -->
+    <color name="calendar_text_primary">#E0E0E0</color>
+    <color name="calendar_text_secondary">#B3FFFFFF</color>
+    <color name="calendar_week_number">#FF8A80</color>
+    <color name="calendar_selected_week">#455A64</color>
+    <color name="calendar_focused_month">#FFB74D</color>
+    <color name="calendar_unfocused_month">#FF8A80</color>
+    <color name="calendar_selected_bar">#FFB74D</color>
+    <color name="calendar_background">#242424</color>
+    <color name="calendar_accent">#FFB74D</color>
+    <color name="stat_item_background">#37FF7070</color>
+
+    <!-- Transparent activity colors -->
+    <color name="colorCamminare_transparent">#D4303030</color>
+    <color name="colorCorrere_transparent">#D4303030</color>
+    <color name="colorSedersi_transparent">#D4303030</color>
+
+    <!-- Chart and stats colors -->
+    <color name="colorgrafico">#D4424242</color>
+    <color name="colorstats">#D4424242</color>
+    <color name="colorrecords">#D4424242</color>
+    <color name="colorrecords2">#424242</color>
+    <color name="myNoDataColor">#D9424242</color>
+    <color name="automatica">#303030</color>
+    <color name="automatica2">#242424</color>
+    <color name="radio_button_color">#FF9800</color>
+</resources>

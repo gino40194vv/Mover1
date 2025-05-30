@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema base con i tuoi colori predefiniti per il tema scuro -->
+    <style name="Theme.YourApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorPrimaryVariant">@color/material_blue_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/material_blue</item>
+        <item name="colorSecondaryVariant">@color/material_blue_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <!-- Aggiungi qui altri colori specifici per il tema scuro -->
+    </style>
+
+    <!-- Tema per i colori dinamici in modalità scura -->
+    <!-- Tema per i colori dinamici di sistema (Material You) -->
+    <style name="Theme.YourApp.Dynamic" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Theme.MyApp.StoricoAttivitaActivity.Dynamic" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryVariant">?attr/colorPrimaryContainer</item>
+        <item name="colorOnPrimary">?attr/colorOnPrimary</item>
+        <item name="colorSecondary">?attr/colorSecondary</item>
+        <item name="colorSecondaryVariant">?attr/colorSecondaryContainer</item>
+        <item name="colorOnSecondary">?attr/colorOnSecondary</item>
+
+        <!-- Definisci il colore più scuro per la status bar -->
+        <item name="colorPrimaryDark">?attr/colorPrimaryInverse</item>
+
+        <!-- Status bar e navigation bar -->
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">?attr/colorSurfaceVariant</item>
+
+    </style>
+
+
+
+    <style name="Theme.MyApp.StoricoAttivitaActivity" parent="Theme.YourApp">
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorPrimaryVariant">@color/material_blue_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <!-- Tema Settings per colori app -->
+    <style name="Theme_Settings" parent="Theme.YourApp">
+
+
+    </style>
+
+    <!-- Tema Settings per colori dinamici -->
+    <style name="Theme_Settings_Dynamic" parent="Theme.YourApp.Dynamic" />
+
+    <style name="Theme.MyApp.MainActivity.Dynamic" parent="Theme.YourApp.Dynamic" />
+
+
+    <style name="ThemeOverlay.App.TimePicker.Dark" parent="ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorSecondary">@color/material_blue</item>
+        <item name="colorSurface">@color/nero_sfondo</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="clockHandColor">@color/material_blue</item>
+        <item name="clockNumberTextColor">@color/white</item>
+        <item name="buttonBarPositiveButtonStyle">@style/TimePickerButtonStyle.Dark</item>
+        <item name="buttonBarNegativeButtonStyle">@style/TimePickerButtonStyle.Dark</item>
+        <item name="android:windowBackground">@color/nero_sfondo</item>
+        <item name="android:background">@color/nero_sfondo</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog.Dark" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorSecondary">@color/material_blue</item>
+        <item name="colorSurface">@color/nero_sfondo</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/nero_sfondo</item>
+        <item name="android:background">@color/nero_sfondo</item>
+    </style>
+
+    <style name="TimePickerButtonStyle.Dark" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/material_blue</item>
+        <item name="android:background">@color/nero_sfondo</item>
+    </style></resources>

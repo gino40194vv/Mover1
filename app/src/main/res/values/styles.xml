@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <style name="CustomCalendarView" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/background_arancione_dark</item>
+        <item name="colorAccent">@color/background_arancione</item>
+        <item name="android:textColorPrimary">@color/background_arancione_dark</item>
+        <item name="android:textColorSecondary">@color/background_arancione</item>
+        <item name="android:background">@color/calendar_background</item>
+
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+
+
+    <style name="StatisticCard">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="contentPadding">16dp</item>
+    </style>
+
+    <style name="CustomDateTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/material_blue</item>
+        <item name="android:textColorHighlight">#760516</item>
+        <item name="android:textColorHint">#4D050F</item>
+        <item name="android:textColorLink">#240207</item>
+    </style>
+
+
+
+
+    <style name="BottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="behavior_peekHeight">0dp</item>
+        <item name="behavior_fitToContents">false</item>
+        <item name="behavior_skipCollapsed">true</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_dialog</item>
+        <item name="behavior_peekHeight">0dp</item>
+        <item name="behavior_fitToContents">false</item>
+        <item name="behavior_skipCollapsed">true</item>
+    </style>
+
+    <style name="ShapeAppearance.TopRoundedCorners" parent="@style/ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+    <style name="CustomCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">24dp</item>
+        <item name="cardBackgroundColor">@android:color/white</item>
+        <item name="android:background">@drawable/rounded_card_background</item>
+        <item name="cardPreventCornerOverlap">true</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
+
+    <style name="CustomDatePickerDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorPrimary">#FFA500</item>
+        <item name="colorAccent">#FFA500</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">#757575</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <style name="DatePickerBackgroundStyle">
+        <item name="android:background">@drawable/rounded_card_background</item>
+    </style>
+
+    <!-- Modifica lo stile SettingsItem per aggiungere un feedback al tocco -->
+    <style name="SettingsItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">72dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+
+
+        <!-- Aggiungi questi attributi per creare un effetto interattivo -->
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="SettingsItem.Dynamic">
+        <item name="android:backgroundTint">?attr/colorSecondary</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="SettingsIcon">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="tint">?attr/colorPrimary</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="SettingsContent">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="SettingsTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.BodyLarge</item>
+        <item name="android:layout_gravity">center_vertical</item>
+
+    </style>
+
+    <style name="SettingsSubtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.BodyMedium</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:layout_gravity">center_vertical</item>
+
+    </style>
+
+    <style name="SettingsArrow">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="tint">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="SettingsSwitch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:text">""</item>
+    </style>
+
+    <style name="SettingsDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        <item name="android:layout_marginTop">9dp</item>
+        <item name="android:layout_marginBottom">9dp</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginEnd">30dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+
+
+    </style>
+
+    <style name="FilterButtonStyle" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorPrimary">#FFA500</item>
+        <item name="colorAccent">#FFA500</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">#757575</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.8</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <style name="CustomCalendarViewDark" parent="ThemeOverlay.MaterialComponents.Dark">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white1</item>
+        <item name="android:background">@color/nerino</item>
+        <item name="android:colorAccent">@color/material_blue</item>
+    </style>
+
+    <!-- Stili per il tema scuro -->
+    <style name="SettingsItemDark">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="SettingsIconDark">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="SettingsContentDark">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="SettingsTitleDark">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="SettingsSubtitleDark">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+
+    <style name="SettingsArrowDark">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="CustomCalendarViewDynamic" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorSecondary</item>
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <item name="android:textColorSecondary">?attr/colorSecondary</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+    </style>
+
+    <style name="Theme_Settings_Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Personalizza qui gli attributi per il tema scuro -->
+    </style>
+
+    <style name="Theme_Settings1_Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Personalizza qui gli attributi per il tema scuro dinamico -->
+    </style>
+
+    <!-- Stile per immagini circolari -->
+    <style name="CircularImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Missing styles for layouts -->
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="RoundedCorners8dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+</resources>

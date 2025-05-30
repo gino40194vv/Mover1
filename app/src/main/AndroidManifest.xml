@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Per Android 13 e superiori, per le notifiche -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_LOCATION"
+        android:minSdkVersion="31" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+    <uses-permission android:name="android.permission.BODY_SENSORS_BACKGROUND" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    
+    <!-- Nuovi permessi per funzionalità avanzate -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
+    <!-- Permessi per sensori avanzati -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    
+    <!-- Features hardware -->
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.barometer" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.heartrate" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="false" />
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <!-- Aggiungi un permission personalizzato -->
+    <permission android:name="com.example.mover.SEDUTA_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <!-- Aggiungi il permesso all'applicazione -->
+    <uses-permission android:name="com.example.personalphysicaltracker.SEDUTA_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher1"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher1_round"
+        android:supportsRtl="true"
+        tools:targetApi="31"
+        android:name=".ActivityTrackingApplication"
+
+        >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDYKasWyeosGKaBmMJ4peb6tlAUvoCSycY" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5557264921450626~7744866914"/>
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Starting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".StoricoAttivitaActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApp.StoricoAttivitaActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                />
+        </activity>
+
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MyApp.MainActivity"
+            android:screenOrientation="portrait"/>
+
+        <service
+            android:name=".StepTrackingService"
+            android:exported="false"
+            android:foregroundServiceType="health" />
+
+        <service
+            android:name=".RunTrackingService"
+            android:exported="false"
+            android:foregroundServiceType="location|health" />
+
+        <service
+            android:name=".SedutaTrackingService"
+            android:foregroundServiceType="health" />
+
+
+        <receiver
+            android:name=".ActivityRecognitionReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.location.ACTIVITY_RECOGNITION_RESULT" />
+                <action android:name="com.example.personalphysicaltracker.ACTIVITY_RECOGNIZED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".ActivityRecognitionService1"
+            android:exported="true"
+            android:foregroundServiceType="location" />
+
+        <service
+            android:name=".DeviceOrientationService"
+            android:foregroundServiceType="health" />
+
+        <service
+            android:name=".BikeTrackingService"
+            android:exported="false"
+            android:foregroundServiceType="location|health">
+        </service>
+
+        <service
+            android:name=".CarTrackingService"
+            android:exported="false"
+            android:foregroundServiceType="location|health">
+            <intent-filter>
+                <action android:name="com.example.personalphysicaltracker.ACTION_PROCESS_ACTIVITY_RECOGNITION" />
+            </intent-filter>
+        </service>
+
+        <!-- Nuovo servizio avanzato per tracking completo -->
+        <service
+            android:name=".services.AdvancedTrackingService"
+            android:exported="false"
+            android:foregroundServiceType="location|health">
+            <intent-filter>
+                <action android:name="com.example.personalphysicaltracker.START_TRACKING" />
+                <action android:name="com.example.personalphysicaltracker.PAUSE_TRACKING" />
+                <action android:name="com.example.personalphysicaltracker.RESUME_TRACKING" />
+                <action android:name="com.example.personalphysicaltracker.STOP_TRACKING" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".DettaglioGiornoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"/>
+
+        <!-- Nuova Activity per selezione attività -->
+        <activity
+            android:name=".ui.ActivitySelectionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApp.MainActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <!-- Activity per analisi prestazioni -->
+        <activity
+            android:name=".ui.AnalisiPrestazioniActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApp.MainActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <!-- Activity per feed sociale -->
+        <activity
+            android:name=".ui.FeedSocialeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApp.MainActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <!-- Activity per club -->
+        <activity
+            android:name=".ui.ClubActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApp.MainActivity"
+            android:parentActivityName=".ui.FeedSocialeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.FeedSocialeActivity" />
+        </activity>
+
+        <!-- Activity per dettagli club -->
+        <activity
+            android:name=".ui.DettagliClubActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApp.MainActivity"
+            android:parentActivityName=".ui.ClubActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ClubActivity" />
+        </activity>
+
+
+    </application>
+
+</manifest>

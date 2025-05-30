@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Sfondo bianco della card -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp"/>
+            <solid android:color="@android:color/white"/>
+        </shape>
+    </item>
+
+    <!-- Bordo destro colorato -->
+    <item android:right="0dp" android:left="80dp"> <!-- Modifica left per allineare con la linea -->
+        <shape android:shape="rectangle">
+            <corners
+                android:topRightRadius="16dp"
+                android:bottomRightRadius="16dp"/>
+            <stroke android:width="2dp" android:color="@color/material_blue"/>
+            <solid android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Sfumatura principale verticale -->
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#E6E6E6"
+                android:endColor="#00E6E6E6"
+                android:angle="270"/>
+            <corners
+                android:topLeftRadius="16dp"
+                android:topRightRadius="16dp"/>
+        </shape>
+    </item>
+
+    <!-- Sfumatura per gli angoli -->
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#33E4A16C"
+                android:endColor="#00578374"
+                android:angle="270"/>
+            <corners
+                android:topLeftRadius="16dp"
+                android:topRightRadius="16dp"/>
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources  xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.MyApp.MainActivity" parent="Theme.Material3.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryVariant">@color/material_orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/material_blue</item>
+        <item name="colorSecondaryVariant">@color/material_blue_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+    </style>
+
+    <style name="Theme.MyApp.MainActivity.Dynamic" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryContainer</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryContainer</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="toolbarStyle">@style/Widget.Material3.Toolbar</item>
+        <item name="colorSurface">?attr/colorPrimaryContainer</item>
+    </style>
+
+
+    <style name="Theme.YourApp" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <attr name="colorSurfaceContainerHigh" format="reference|color"/>
+    <attr name="colorSurfaceContainer" format="reference|color"/>
+    <attr name="colorSurfaceContainerLow" format="reference|color"/>
+    <attr name="colorPrimaryContainer" format="reference|color"/>
+    <attr name="colorSecondaryContainer" format="reference|color"/>
+    <attr name="colorOutline" format="reference|color"/>
+
+
+    <style name="Theme.MyApp.StoricoAttivitaActivity" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorPrimaryVariant">@color/material_blue_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <style name="Theme.MyApp.StoricoAttivitaActivity.Dynamic" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryVariant">?attr/colorPrimaryContainer</item>
+        <item name="colorOnPrimary">?attr/colorOnPrimary</item>
+        <item name="colorSecondary">?attr/colorSecondary</item>
+        <item name="colorSecondaryVariant">?attr/colorSecondaryContainer</item>
+        <item name="colorOnSecondary">?attr/colorOnSecondary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">?attr/colorSurfaceVariant</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryInverse</item>
+
+
+    </style>
+
+    <!-- Stile per il DatePicker -->
+    <style name="CustomDatePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FF3163</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:lineSpacingExtra">25dp</item>
+    </style>
+
+    <style name="Theme.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#FFFFFF</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/frame</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+        <item name="postSplashScreenTheme">@style/Theme.YourApp</item>
+    </style>
+
+    <style name="Theme_Settings" parent="Theme.Material3.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="toolbarStyle">@style/Widget.Material3.Toolbar</item>
+        <item name="android:statusBarColor">@color/grigio_scuro1</item>
+    </style>
+
+    <style name="Theme_Settings1" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryContainer</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryContainer</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="toolbarStyle">@style/Widget.Material3.Toolbar</item>
+        <item name="colorSurface">?attr/colorPrimaryContainer</item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.TimePicker" parent="ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorSecondary">@color/material_blue</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorSecondary">@color/material_blue</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TimePicker" parent="ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorSecondary">@color/material_blue</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="clockHandColor">@color/material_blue</item>
+        <item name="clockNumberTextColor">@color/black</item>
+        <item name="buttonBarPositiveButtonStyle">@style/TimePickerButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/TimePickerButtonStyle</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="TimePickerButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/material_blue</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+
+
+
+
+</resources>

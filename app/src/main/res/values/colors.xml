@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white1">#E0E0E0</color>
+    <color name="material_orange">#F53D1CFB</color>
+    <color name="material_orange_dark">#7A4D20</color> <!-- Arancione scuro -->
+    <color name="material_blue">#EBB80C26</color> <!-- Blu Material -->
+    <color name="material_blue_dark">#3E060E</color> <!-- Blu scuro -->
+    <color name="material_blueRO">#540813</color> <!-- Blu Material -->
+    <color name="material_red">#E63535</color> <!-- Rosso -->
+    <color name="material_green">#4CAF50</color> <!-- Verde -->
+    <color name="semi_transparent_black">#80000000</color>
+    <color name="material_blue_giorni">#CC3612</color> <!-- Blu Material -->
+
+    <color name="colorCamminare">#FF4800</color>
+    <color name="colorCorrere">#EFF9003E</color>
+    <color name="colorGuidare">#FF4D00</color>
+    <color name="colorSedersi">#FF0267</color>
+    <color name="colorBici">#9E2D00</color>
+    <color name="transparent_b">#121116</color>
+
+    <color name="defaultButtonColor">#FFFFFF</color>
+    <color name="transparent_black">#80000000</color> <!-- Colore nero trasparente -->
+    <color name="rossino">#37FF7070</color>
+
+    <color name="track_color">#BD2C44</color>
+    <color name="thumb_color">#42040C</color>
+
+    <color name="nerino">#222222</color>
+    <color name="nero_sfondo">#211E1D</color>
+    <color name="card_storico_backgroung">#FFDBDF</color>
+    <color name="red">#FF0000</color>
+    <color name="text_color_default">@color/material_blue</color>
+    <color name="material_blue2">#A5A90025</color> <!-- Blu Material -->
+
+    <color name="command_center_color">#D92809</color>
+    <color name="colore_Storico_back">#FFF2F3</color>
+    <color name="colore_Storico_back_to">#E686B8A8</color>
+    <color name="command_center_color1">#D9A2061E</color>
+
+    <color name="colore_fab">#BA3548</color>
+    <color name="colore_fab1">#C2D76272</color>
+    <color name="colore_fab2">#D4EFA7B1</color>
+    <color name="colore_fab3">#CDD35161</color>
+    <color name="originalBackgroundColor">#37FF7070</color>
+    <color name="background_giorno">#FFF1E3</color>
+    <color name="background_arancione">#ABFF1A00</color>
+    <color name="background_arancione_dark">#BAC52400</color>
+    <color name="background_trofei">#F4D1D5</color>
+    <color name="calendar_text_primary">#1B4E42</color>
+    <color name="calendar_text_secondary">#68621135</color>
+    <color name="calendar_week_number">#89061A</color>
+    <color name="calendar_selected_week">#759D7F</color>
+    <color name="calendar_focused_month">#7E5100</color>
+    <color name="calendar_unfocused_month">#7A0517</color>
+    <color name="calendar_selected_bar">#E49300</color>
+    <color name="calendar_background">#E0BEC2</color>
+    <color name="calendar_accent">#9E6A00</color>
+    <color name="stat_item_background">#37FF7070</color>
+
+    <color name="colorCamminare_transparent">#D4EF6E7F</color>
+    <color name="colorCorrere_transparent">#D4EF6E8E</color>
+    <color name="colorSedersi_transparent">#D4EF6EA6</color>
+
+    <color name="colorgrafico">#D4DB3E53</color>
+    <color name="colorstats">#D4E27893</color>
+    <color name="colorrecords">#D4DB5A9D</color>
+    <color name="colorrecords2">#DBADB2</color>
+    <color name="myNoDataColor">#D9AA2E45</color>
+    <color name="automatica">#FBE4D4</color>
+    <color name="automatica2">#FFF8F2</color>
+    <color name="radio_button_color">#FF9800</color>
+    <color name="nero_sfondo_dark">#19181D</color>
+
+    <color name="grigio_scuro">#DDEDE9E9</color>
+    <color name="grigio_scuro1">#EFEDD1D1</color>
+    <color name="grigio_chiaro">#F5121010</color>
+
+    <!-- Nuovi colori per le funzionalità avanzate -->
+    <color name="selection_overlay">#1A000000</color>
+    <color name="activity_card_selected">#E3F2FD</color>
+    <color name="activity_card_stroke_selected">#2196F3</color>
+    
+    <!-- Colori per categorie attività -->
+    <color name="categoria_corsa">#FF6B35</color>
+    <color name="categoria_ciclismo">#4ECDC4</color>
+    <color name="categoria_camminata">#45B7D1</color>
+    <color name="categoria_acquatici">#96CEB4</color>
+    <color name="categoria_sport_invernali">#FFEAA7</color>
+    <color name="categoria_fitness">#DDA0DD</color>
+    <color name="categoria_altri_sport">#98D8C8</color>
+    <color name="categoria_trasporto">#F7DC6F</color>
+    <color name="categoria_sedentario">#BDC3C7</color>
+    
+    <!-- Colori per funzionalità social -->
+    <color name="orange_500">#FF9800</color>
+    <color name="orange_700">#F57C00</color>
+    <color name="teal_500">#009688</color>
+
+    <!-- Missing colors for layouts -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="primary">#2196F3</color>
+    <color name="accent">#FF4081</color>
+    <color name="text_secondary">#757575</color>
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="info">#2196F3</color>
+    <color name="background_color">#F5F5F5</color>
+    <color name="primary_color">#2196F3</color>
+    <color name="accent_color">#FF4081</color>
+    <color name="text_primary">#212121</color>
+
+</resources>

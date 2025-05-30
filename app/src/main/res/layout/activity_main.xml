@@ -1,0 +1,2731 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootFrameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:fitsSystemWindows="true">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="always">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:visibility="visible">
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/myCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="4dp"
+                    android:background="@android:color/white"
+                    android:clipToPadding="true"
+                    android:clipChildren="true">
+
+
+
+                    <FrameLayout
+                        android:id="@+id/map_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <fragment
+                            android:id="@+id/map_dynamic"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#52FFFFFF"
+                            android:fitsSystemWindows="true"
+                            tools:visibility="gone" />
+                        <View
+                            android:id="@+id/map_overlay"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent" />
+                    </FrameLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+                <!-- LinearLayout per il contenuto interno dello ScrollView -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:id="@+id/buttonFrameLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
+
+                        <LinearLayout
+                            android:id="@+id/RecordsLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/rounded_background"
+                            android:padding="4dp"
+                            android:elevation="0.2dp"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp">
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:layout_marginStart="0dp"
+                                android:layout_marginEnd="0dp"
+                                android:gravity="center">
+                                <!-- HorizontalScrollView con i pulsanti -->
+                                <HorizontalScrollView
+                                    android:id="@+id/horizontalScrollView1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:clipToPadding="false"
+                                    android:paddingTop="0dp"
+                                    android:paddingBottom="0dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:scrollbars="none"
+                                    android:layout_gravity="center_vertical">
+
+                                    <LinearLayout
+                                        android:id="@+id/buttonLayout"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical">
+
+                                        <View
+                                            android:id="@+id/leftSpacer"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:visibility="gone" />
+
+
+
+
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnCamminare"
+                                            android:layout_width="130dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="16dp"
+                                            android:backgroundTint="@color/rossino"
+                                            android:paddingTop="16dp"
+                                            android:paddingStart="6dp"
+                                            android:paddingBottom="16dp"
+                                            android:paddingEnd="0dp"
+                                            android:text="Camminata"
+                                            android:textColor="@color/colorCamminare"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/footprint_24px"
+                                            app:iconPadding="2dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/colorCamminare"
+                                            app:rippleColor="@color/colorCamminare"
+                                            app:strokeColor="@color/colorCamminare"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Correre -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnCorrere"
+                                            android:layout_width="130dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="16dp"
+                                            android:backgroundTint="@color/rossino"
+                                            android:padding="16dp"
+                                            android:text="Corsa"
+                                            android:textColor="@color/colorCorrere"
+                                            android:textSize="15sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/directions_run_24px"
+                                            app:iconPadding="6dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/colorCorrere"
+                                            app:rippleColor="@color/colorCorrere"
+                                            app:strokeColor="@color/colorCorrere"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Guidare (Auto) -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnGuidare"
+                                            android:layout_width="130dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="16dp"
+                                            android:backgroundTint="@color/rossino"
+                                            android:padding="16dp"
+                                            android:text="Auto"
+                                            android:textColor="@color/colorGuidare"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/directions_car"
+                                            app:iconPadding="8dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/colorGuidare"
+                                            app:rippleColor="@color/colorGuidare"
+                                            app:strokeColor="@color/colorGuidare"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Bicicletta -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnBicicletta"
+                                            android:layout_width="130dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="16dp"
+                                            android:backgroundTint="@color/rossino"
+                                            android:padding="16dp"
+                                            android:text="Bici"
+                                            android:textColor="@color/colorBici"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/directions_bike"
+                                            app:iconPadding="8dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/colorBici"
+                                            app:rippleColor="@color/colorBici"
+                                            app:strokeColor="@color/colorBici"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Sedersi -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnSedersi"
+                                            android:layout_width="130dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="16dp"
+                                            android:backgroundTint="@color/rossino"
+                                            android:padding="16dp"
+                                            android:text="Sedersi"
+                                            android:textColor="@color/colorSedersi"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/seat_24px"
+                                            app:iconPadding="8dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/colorSedersi"
+                                            app:rippleColor="@color/colorSedersi"
+                                            app:strokeColor="@color/colorSedersi"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Più Attività (Strava-like) -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnMoreActivities"
+                                            android:layout_width="150dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="4dp"
+                                            android:backgroundTint="@color/purple_500"
+                                            android:padding="16dp"
+                                            android:text="Più Attività"
+                                            android:textColor="@color/white"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/ic_play_arrow"
+                                            app:iconPadding="8dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/white"
+                                            app:rippleColor="@color/purple_700"
+                                            app:strokeColor="@color/purple_500"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Analisi Prestazioni -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnAnalisiPrestazioni"
+                                            android:layout_width="150dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="4dp"
+                                            android:backgroundTint="@color/teal_500"
+                                            android:padding="16dp"
+                                            android:text="Analisi"
+                                            android:textColor="@color/white"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/ic_analytics"
+                                            app:iconPadding="8dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/white"
+                                            app:rippleColor="@color/teal_700"
+                                            app:strokeColor="@color/teal_500"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Social -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnSocial"
+                                            android:layout_width="150dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="4dp"
+                                            android:backgroundTint="@color/orange_500"
+                                            android:padding="16dp"
+                                            android:text="Social"
+                                            android:textColor="@color/white"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/ic_people"
+                                            app:iconPadding="8dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/white"
+                                            app:rippleColor="@color/orange_700"
+                                            app:strokeColor="@color/orange_500"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Segmenti -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnSegmenti"
+                                            android:layout_width="150dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="4dp"
+                                            android:backgroundTint="@color/purple_700"
+                                            android:padding="16dp"
+                                            android:text="Segmenti"
+                                            android:textColor="@color/white"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/ic_analytics"
+                                            app:iconPadding="8dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/white"
+                                            app:rippleColor="@color/purple_500"
+                                            app:strokeColor="@color/purple_700"
+                                            app:strokeWidth="0dp" />
+
+                                        <!-- Pulsante Club -->
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/btnClub"
+                                            android:layout_width="150dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="4dp"
+                                            android:backgroundTint="@color/teal_700"
+                                            android:padding="16dp"
+                                            android:text="Club"
+                                            android:textColor="@color/white"
+                                            android:textSize="14sp"
+                                            android:fontFamily="@font/roboto_medium"
+                                            app:cornerRadius="16dp"
+                                            app:icon="@drawable/ic_people"
+                                            app:iconPadding="8dp"
+                                            app:iconSize="40dp"
+                                            app:iconTint="@color/white"
+                                            app:rippleColor="@color/teal_500"
+                                            app:strokeColor="@color/teal_700"
+                                            app:strokeWidth="0dp" />
+
+                                        <View
+                                            android:id="@+id/rightSpacer"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:visibility="gone" />
+
+                                    </LinearLayout>
+                                </HorizontalScrollView>
+                                <View
+                                    android:id="@+id/View_1"
+                                    android:layout_width="24dp"
+                                    android:layout_height="100dp"
+                                    android:layout_gravity="end|center_vertical"
+                                    android:layout_marginEnd="16dp"
+                                    android:background="@drawable/fade_right" />
+
+                                <View
+                                    android:id="@+id/View_2"
+                                    android:layout_width="24dp"
+                                    android:layout_height="100dp"
+                                    android:layout_gravity="start|center_vertical"
+                                    android:layout_marginStart="16dp"
+                                    android:background="@drawable/fade_left"
+                                    android:visibility="gone"/>
+
+                            </FrameLayout>
+                        </LinearLayout>
+
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:baselineAligned="true">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AI"
+                                android:textColor="@color/material_blueRO"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:layout_marginEnd="3dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="(beta)"
+                                android:textColor="@color/material_blueRO"
+                                android:textSize="10sp"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                        </LinearLayout>
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchAutomaticActivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:minHeight="48dp"
+                            app:track="@drawable/custom_switch_track"
+                            app:thumbTint="@color/thumb_color"
+                            app:trackTint="@color/track_color"
+                            style="@style/Widget.Material3.CompoundButton.MaterialSwitch" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imgRecognizedActivity"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="6dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:tint="@color/material_blue"
+                        android:background="@drawable/circle_background"/>
+
+                    <!-- TextView per Attività Riconosciuta -->
+                    <TextView
+                        android:id="@+id/txtRecognizedActivity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        android:text="un momento..."
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/layoutAutomaticActivityStats"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="16dp"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <!-- Primo valore -->
+                        <TextView
+                            android:id="@+id/txtAutomaticStatsPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:textStyle="bold|italic"
+                            android:textAllCaps="true"
+                            android:textSize="22sp"
+                            tools:text="1234 PASSI"/>
+
+                        <!-- Secondo valore -->
+                        <TextView
+                            android:id="@+id/txtAutomaticStatsSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:textStyle="bold|italic"
+                            android:textAllCaps="true"
+                            android:textSize="22sp"
+                            tools:text="1.2 KM"/>
+
+                        <!-- Terzo valore -->
+                        <TextView
+                            android:id="@+id/txtAutomaticStatsTertiary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold|italic"
+                            android:textAllCaps="true"
+                            android:textSize="22sp"
+                            tools:text="15 MIN"/>
+                    </LinearLayout>
+
+                    <!-- TextView per Stato -->
+                    <TextView
+                        android:id="@+id/txtStato"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nessuna attività in corso"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:visibility="gone"/>
+
+                    <!-- Sezione Statistiche e Social -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginHorizontal="16dp">
+
+                        <!-- Titolo Sezione -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Le tue Statistiche"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/material_blue"
+                            android:fontFamily="@font/roboto_medium"
+                            android:layout_marginBottom="12dp"/>
+
+                        <!-- Cards Row 1: Analisi e Social -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+                            <!-- Card Analisi Prestazioni -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cardAnalisiPrestazioni"
+                                android:layout_width="0dp"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="8dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="4dp"
+                                app:cardBackgroundColor="@color/teal_500"
+                                app:rippleColor="@color/teal_700">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="16dp">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@drawable/ic_analytics"
+                                        app:tint="@color/white"
+                                        android:layout_marginBottom="8dp"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Analisi"
+                                        android:textColor="@color/white"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/roboto_medium"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Prestazioni"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp"
+                                        android:fontFamily="@font/roboto_medium"/>
+
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <!-- Card Feed Sociale -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cardFeedSociale"
+                                android:layout_width="0dp"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="4dp"
+                                app:cardBackgroundColor="@color/orange_500"
+                                app:rippleColor="@color/orange_700">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="16dp">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@drawable/ic_people"
+                                        app:tint="@color/white"
+                                        android:layout_marginBottom="8dp"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Feed"
+                                        android:textColor="@color/white"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/roboto_medium"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Sociale"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp"
+                                        android:fontFamily="@font/roboto_medium"/>
+
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                        <!-- Cards Row 2: Club e Segmenti -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="12dp">
+
+                            <!-- Card Club -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cardClub"
+                                android:layout_width="0dp"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="8dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="4dp"
+                                app:cardBackgroundColor="@color/purple_500"
+                                app:rippleColor="@color/purple_700">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="16dp">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@drawable/ic_people"
+                                        app:tint="@color/white"
+                                        android:layout_marginBottom="8dp"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Club"
+                                        android:textColor="@color/white"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/roboto_medium"/>
+
+                                    <TextView
+                                        android:id="@+id/txtClubCount"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="3 iscrizioni"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp"
+                                        android:fontFamily="@font/roboto_medium"/>
+
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <!-- Card Segmenti -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/cardSegmenti"
+                                android:layout_width="0dp"
+                                android:layout_height="120dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                app:cardCornerRadius="16dp"
+                                app:cardElevation="4dp"
+                                app:cardBackgroundColor="@color/material_blue"
+                                app:rippleColor="@color/material_blueRO">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="16dp">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:src="@drawable/ic_analytics"
+                                        app:tint="@color/white"
+                                        android:layout_marginBottom="8dp"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Segmenti"
+                                        android:textColor="@color/white"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold"
+                                        android:fontFamily="@font/roboto_medium"/>
+
+                                    <TextView
+                                        android:id="@+id/txtSegmentiCount"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="12 PR"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp"
+                                        android:fontFamily="@font/roboto_medium"/>
+
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                        <!-- Card Statistiche Settimanali -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardStatisticheSettimanali"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="4dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:strokeColor="@color/material_blue"
+                            app:strokeWidth="1dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Questa Settimana"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/material_blue"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:layout_marginBottom="12dp"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <!-- Distanza -->
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical"
+                                        android:gravity="center">
+
+                                        <TextView
+                                            android:id="@+id/txtDistanzaSettimanale"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="24.5"
+                                            android:textSize="20sp"
+                                            android:textStyle="bold"
+                                            android:textColor="@color/material_blue"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="km"
+                                            android:textSize="12sp"
+                                            android:textColor="@color/material_blue"/>
+
+                                    </LinearLayout>
+
+                                    <!-- Tempo -->
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical"
+                                        android:gravity="center">
+
+                                        <TextView
+                                            android:id="@+id/txtTempoSettimanale"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="3h 45m"
+                                            android:textSize="20sp"
+                                            android:textStyle="bold"
+                                            android:textColor="@color/material_blue"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="tempo"
+                                            android:textSize="12sp"
+                                            android:textColor="@color/material_blue"/>
+
+                                    </LinearLayout>
+
+                                    <!-- Attività -->
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical"
+                                        android:gravity="center">
+
+                                        <TextView
+                                            android:id="@+id/txtAttivitaSettimanali"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="8"
+                                            android:textSize="20sp"
+                                            android:textStyle="bold"
+                                            android:textColor="@color/material_blue"/>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="attività"
+                                            android:textSize="12sp"
+                                            android:textColor="@color/material_blue"/>
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/cardContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="32dp">
+
+                            <!-- Layout per i contatori -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/contatoriCard"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="0dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:background="#FFFFFF"
+                                android:visibility="gone"
+                                app:cardCornerRadius="28dp"
+                                app:cardElevation="8dp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent">
+
+                                <LinearLayout
+                                    android:id="@+id/statsLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="20dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="16dp"
+                                    android:visibility="gone">
+                                    <LinearLayout
+                                        android:id="@+id/layoutDistanza"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_marginBottom="16dp"
+                                        android:gravity="center_vertical">
+
+                                        <ImageView
+                                            android:id="@+id/iconDistanza"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="32dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/conversion_path"
+                                            app:tint="@color/material_blue"/>
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center_horizontal"
+                                            android:orientation="vertical">
+                                            <RelativeLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/txtDistanza"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="0"
+                                                    android:layout_marginStart="8dp"
+                                                    android:textStyle="bold"
+                                                    android:textSize="28sp"
+                                                    android:textColor="@color/material_blue"/>
+                                                <TextView
+                                                    android:id="@+id/txtDistanzaUnit"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_toEndOf="@id/txtDistanza"
+                                                    android:layout_alignBottom="@id/txtDistanza"
+                                                    android:text="m"
+                                                    android:textSize="16sp"
+                                                    android:layout_marginStart="4dp"
+                                                    android:layout_gravity="bottom"
+                                                    android:layout_marginBottom="4dp"/>
+
+                                            </RelativeLayout>
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:id="@+id/labelDistanza"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Distanza"
+                                            android:textSize="12sp"
+                                            android:gravity="center_vertical"/>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/layoutTempo"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_marginBottom="16dp"
+                                        android:gravity="center_vertical">
+
+                                        <ImageView
+                                            android:id="@+id/iconTempo"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="32dp"
+                                            android:src="@drawable/pace_24dp"
+                                            android:layout_gravity="center"
+                                            app:tint="@color/material_blue"/>
+
+                                        <ImageView
+                                            android:id="@+id/iconPausa"
+                                            android:layout_width="32dp"
+                                            android:layout_height="32dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="32dp"
+                                            android:layout_gravity="start"
+                                            android:src="@drawable/autostop_24dp"
+                                            app:tint="@color/material_blue"
+                                            android:visibility="gone"/>
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center_horizontal">
+                                            <RelativeLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+                                                    android:id="@+id/txtTempo"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:textSize="28sp"
+                                                    android:textStyle="bold"
+                                                    android:textColor="@color/material_blue"/>
+
+                                                <TextView
+                                                    android:id="@+id/txtTempoUnit"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_toEndOf="@id/txtTempo"
+                                                    android:layout_alignBottom="@id/txtTempo"
+                                                    android:textSize="16sp"
+                                                    android:layout_marginStart="4dp"
+                                                    android:layout_marginBottom="4dp"/>
+
+                                                <TextView
+                                                    android:id="@+id/txtTempoSeconds"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_toEndOf="@id/txtTempoUnit"
+                                                    android:textSize="26sp"
+                                                    android:textStyle="bold"
+                                                    android:textColor="@color/material_blue"
+                                                    android:layout_marginStart="4dp"/>
+
+                                                <TextView
+                                                    android:id="@+id/txtTempoSecondsUnit"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_toEndOf="@id/txtTempoSeconds"
+                                                    android:layout_alignBottom="@id/txtTempoSeconds"
+                                                    android:textSize="16sp"
+                                                    android:layout_marginStart="4dp"
+                                                    android:layout_marginBottom="4dp"/>
+                                            </RelativeLayout>
+
+                                            <TextView
+                                                android:id="@+id/txtPausa"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_vertical"
+                                                android:text="Sei in pausa"
+                                                android:textStyle="bold"
+                                                android:textSize="18sp"
+                                                android:visibility="gone"/>
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:id="@+id/labelTempo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Tempo"
+                                            android:layout_marginTop="6dp"
+                                            android:textSize="14sp"
+                                            android:gravity="center_vertical"/>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/layoutVelocitaAttuale"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_marginBottom="16dp"
+                                        android:gravity="center_vertical">
+
+                                        <ImageView
+                                            android:id="@+id/iconVelocitaAttuale"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="32dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/sprint_24dp"
+                                            app:tint="@color/material_blue"/>
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center_horizontal"
+                                            android:orientation="vertical">
+                                            <RelativeLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/txtVelocitaAttuale"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="-:-"
+                                                    android:layout_marginStart="15dp"
+                                                    android:textSize="28sp"
+                                                    android:textStyle="bold"
+                                                    android:textColor="@color/material_blue"/>
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_toEndOf="@id/txtVelocitaAttuale"
+                                                    android:layout_alignBottom="@id/txtVelocitaAttuale"
+                                                    android:text="km/h"
+                                                    android:textSize="16sp"
+                                                    android:layout_marginStart="4dp"
+                                                    android:layout_marginBottom="4dp"/>
+                                            </RelativeLayout>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center_vertical"
+                                            android:orientation="vertical"
+                                            android:layout_marginTop="6dp">
+
+                                            <TextView
+                                                android:id="@+id/labelVelocitaAttuale"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Velocità"
+                                                android:gravity="center_horizontal"
+                                                android:textSize="12sp"/>
+
+                                            <TextView
+                                                android:id="@+id/labelVelocitaAttualeSub"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="attuale"
+                                                android:gravity="end"
+                                                android:textSize="14sp"/>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/layoutVelocitaMedia"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical">
+
+                                        <ImageView
+                                            android:id="@+id/iconVelocitaMedia"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="32dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/speed_24dp"
+                                            app:tint="@color/material_blue"/>
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center_horizontal"
+                                            android:orientation="vertical">
+                                            <RelativeLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content">
+                                                <TextView
+                                                    android:id="@+id/txtVelocitaMedia"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="-:-"
+                                                    android:layout_marginStart="15dp"
+                                                    android:textSize="28sp"
+                                                    android:textStyle="bold"
+                                                    android:textColor="@color/material_blue"/>
+
+                                                <TextView
+                                                    android:id="@+id/txtVelocitaMediaUnit"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_toEndOf="@id/txtVelocitaMedia"
+                                                    android:layout_alignBottom="@id/txtVelocitaMedia"
+                                                    android:text="km/h"
+                                                    android:textSize="16sp"
+                                                    android:layout_marginStart="4dp"
+                                                    android:layout_marginBottom="4dp"/>
+                                            </RelativeLayout>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="6dp"
+                                            android:gravity="center_vertical"
+                                            android:orientation="vertical"
+                                            android:layout_marginTop="6dp">
+
+                                            <TextView
+                                                android:id="@+id/labelVelocitaMedia"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Velocità"
+                                                android:gravity="center"
+                                                android:textColor="@color/white"
+                                                android:textSize="12sp"/>
+
+                                            <TextView
+                                                android:id="@+id/labelVelocitaMediaSub"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="media"
+                                                android:gravity="end"
+                                                android:textColor="@color/white"
+                                                android:textSize="14sp"/>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/layoutPaceMedio"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical"
+                                        android:layout_marginTop="14dp">
+
+                                        <ImageView
+                                            android:id="@+id/iconPaceMedio"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="32dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/pace_24dp"
+                                            app:tint="@color/material_blue"/>
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center_horizontal"
+                                            android:orientation="vertical">
+
+                                            <RelativeLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content">
+
+                                                <TextView
+                                                    android:id="@+id/txtPaceMedio"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="-:-"
+                                                    android:layout_marginStart="15dp"
+                                                    android:textSize="28sp"
+                                                    android:textStyle="bold"
+                                                    android:textColor="@color/material_blue"/>
+
+                                                <TextView
+                                                    android:id="@+id/txtPaceMedioUnit"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_toEndOf="@id/txtPaceMedio"
+                                                    android:layout_alignBottom="@id/txtPaceMedio"
+                                                    android:text="min/km"
+                                                    android:textSize="16sp"
+                                                    android:layout_marginStart="4dp"
+                                                    android:layout_marginBottom="4dp"/>
+                                            </RelativeLayout>
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="6dp"
+                                            android:gravity="center_vertical"
+                                            android:orientation="vertical"
+                                            android:layout_marginTop="6dp">
+
+                                            <TextView
+                                                android:id="@+id/labelPaceMedio"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Passo"
+                                                android:gravity="center"
+                                                android:textColor="@color/white"
+                                                android:textSize="12sp"/>
+
+                                            <TextView
+                                                android:id="@+id/labelPaceMedioSub"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="medio"
+                                                android:gravity="end"
+                                                android:textColor="@color/white"
+                                                android:textSize="12sp"/>
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/layoutPassi"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_marginBottom="16dp"
+                                        android:gravity="center_vertical">
+
+                                        <ImageView
+                                            android:id="@+id/iconPassi"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="32dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/barefoot_24dp"
+                                            app:tint="@color/material_blue"/>
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center_horizontal"
+                                            android:orientation="horizontal">
+
+                                            <TextView
+                                                android:id="@+id/txtPassi"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="0"
+                                                android:layout_marginStart="-20dp"
+                                                android:textSize="28dp"
+                                                android:textStyle="bold"
+                                                android:textColor="@color/material_blue"/>
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:id="@+id/labelPassi"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="center_vertical"
+                                            android:text="Passi"
+                                            android:layout_marginTop="6dp"
+                                            android:textSize="16sp"/>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/layoutVolteSeduto"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical">
+
+                                        <ImageView
+                                            android:id="@+id/iconVolteSeduto"
+                                            android:layout_width="36dp"
+                                            android:layout_height="36dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="32dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/airline_seat"
+                                            app:tint="@color/material_blue"/>
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center_horizontal"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/txtVolteSeduto"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="0"
+                                                android:textSize="28sp"
+                                                android:textStyle="bold"
+                                                android:textColor="@color/material_blue"/>
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:id="@+id/labelVolteSeduto"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6dp"
+                                            android:gravity="center_vertical"
+                                            android:text="seduto"
+                                            android:textSize="16sp"/>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <View
+                                android:id="@+id/spacerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_weight="1"
+                                android:visibility="gone" />
+
+
+
+                            <TextView
+                                android:id="@+id/txtCountdown"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/material_blue"
+                                android:textSize="48sp"
+                                android:textStyle="bold"
+                                android:visibility="gone"
+                                android:elevation="8dp"
+                                app:layout_constraintTop_toTopOf="@id/contatoriCard"
+                                app:layout_constraintBottom_toBottomOf="@id/contatoriCard"
+                                app:layout_constraintStart_toStartOf="@id/contatoriCard"
+                                app:layout_constraintEnd_toEndOf="@id/contatoriCard"
+                                tools:visibility="visible" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </FrameLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/statsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="12dp"
+                        android:elevation="0.4dp"
+                        android:background="@drawable/stats_background"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <!-- Header con titolo -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="16dp">
+
+                            <TextView
+                                android:id="@+id/activityTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Attività Oggi"
+                                android:textColor="@color/colore_fab3"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="4dp"
+                                android:src="@drawable/bookmark_flag_24dp"
+                                app:tint="#ABDC6170" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/dailyStatsContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginBottom="0dp">
+
+                            <LinearLayout
+                                android:id="@+id/dailyStatsContainer_dentro"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+                                <!-- Card Passi -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/stat_item_background"
+                                    android:orientation="vertical"
+                                    android:padding="12dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="8dp">
+
+                                        <ImageView
+                                            android:layout_width="26dp"
+                                            android:layout_height="26dp"
+                                            android:src="@drawable/barefoot_24dp"
+                                            app:tint="@color/colorCamminare" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Passi"
+                                            android:textStyle="bold"
+                                            android:gravity="end"/>
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/txtPassiGiornalieriCompact"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold"
+                                        android:text="0"
+                                        android:gravity="end"
+                                        android:layout_marginTop="4dp"/>
+                                </LinearLayout>
+
+                                <!-- Card Sedute -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginHorizontal="4dp"
+                                    android:background="@drawable/stat_item_background"
+                                    android:orientation="vertical"
+                                    android:padding="12dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="8dp">
+
+                                        <ImageView
+                                            android:layout_width="26dp"
+                                            android:layout_height="26dp"
+                                            android:src="@drawable/seat_24px"
+                                            app:tint="@color/colorSedersi" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Seduto"
+                                            android:textStyle="bold"
+                                            android:gravity="end"/>
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/txtSeduteGiornaliereCompact"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold"
+                                        android:text="0"
+                                        android:gravity="end"
+                                        android:layout_marginTop="4dp"/>
+                                </LinearLayout>
+
+                                <!-- Card Corse -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:background="@drawable/stat_item_background"
+                                    android:orientation="vertical"
+                                    android:padding="12dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="8dp">
+
+                                        <ImageView
+                                            android:layout_width="26dp"
+                                            android:layout_height="26dp"
+                                            android:src="@drawable/directions_run_24px"
+                                            app:tint="@color/colorCorrere" />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Corsa"
+                                            android:textStyle="bold"
+                                            android:gravity="end"/>
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/txtCorsaGiornaliereCompact"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold"
+                                        android:text="0 km"
+                                        android:gravity="end"
+                                        android:layout_marginTop="4dp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal">
+
+                                <ImageView
+                                    android:id="@+id/scrollArrow"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/arrow_with_glow"/>
+
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/statsContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Riga Passi -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="12dp"
+                                android:orientation="horizontal">
+
+                                <!-- Passi Oggi -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="110dp"
+                                    android:maxHeight="130dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/stat_item_background"
+                                    android:orientation="vertical"
+                                    android:padding="12dp"
+                                    android:tag="animatable">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_width="28dp"
+                                            android:layout_height="28dp"
+                                            android:src="@drawable/barefoot_24dp"
+                                            app:tint="@color/colorCamminare" />
+
+                                        <Space
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="8dp"
+                                            android:text="Oggi"
+                                            android:textStyle="bold"
+                                            android:textSize="20sp"/>
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/txtPassiGiornalieri"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:textSize="20sp"
+                                        android:text="0 passi"/>
+
+                                    <TextView
+                                        android:id="@+id/txtTempoCamminataGiornaliere"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:layout_marginStart="8dp"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+
+                                <!-- Passi Settimanali -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="110dp"
+                                    android:maxHeight="130dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:background="@drawable/stat_item_background"
+                                    android:orientation="vertical"
+                                    android:padding="12dp"
+                                    android:tag="animatable">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_width="28dp"
+                                            android:layout_height="29dp"
+                                            android:src="@drawable/barefoot_24dp"
+                                            app:tint="@color/purple_500" />
+
+                                        <Space
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="8dp"
+                                            android:text="Settimana"
+                                            android:textStyle="bold"
+                                            android:textSize="20sp" />
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/txtPassiSettimanali"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:gravity="end"
+                                        android:textSize="20sp"
+                                        android:text="0 passi"/>
+                                    <TextView
+                                        android:id="@+id/txtTempoCamminataSettimanali"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:layout_marginStart="8dp"
+                                        android:textSize="14sp"/>
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="12dp"
+                                android:orientation="horizontal">
+                                <!-- Sedute Oggi -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginEnd="8dp"
+                                    android:background="@drawable/stat_item_background"
+                                    android:minHeight="110dp"
+                                    android:maxHeight="130dp"
+                                    android:orientation="vertical"
+                                    android:padding="12dp"
+                                    android:tag="animatable">
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_width="28dp"
+                                            android:layout_height="28dp"
+                                            android:src="@drawable/seat_24px"
+                                            app:tint="@color/colorSedersi" />
+
+                                        <Space
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="8dp"
+                                            android:text="Oggi"
+                                            android:textSize="20sp"
+                                            android:textStyle="bold"/>
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/txtNumeroSeduteGiornaliere"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:textSize="20sp"
+                                        android:text="0 volte"/>
+
+                                    <TextView
+                                        android:id="@+id/txtTempoSeduteGiornaliere"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:layout_marginStart="8dp"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+
+                                <!-- Sedute Settimanali -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:background="@drawable/stat_item_background"
+                                    android:minHeight="110dp"
+                                    android:maxHeight="130dp"
+                                    android:orientation="vertical"
+                                    android:padding="12dp"
+                                    android:tag="animatable">
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_width="28dp"
+                                            android:layout_height="28dp"
+                                            android:src="@drawable/seat_24px"
+                                            app:tint="@color/purple_500" />
+
+                                        <Space
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="8dp"
+                                            android:text="Settimana"
+                                            android:textStyle="bold"
+                                            android:textSize="20sp" />
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/txtNumeroSeduteSettimanali"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:gravity="end"
+                                        android:textSize="20sp"
+                                        android:text="0 volte"/>
+
+                                    <TextView
+                                        android:id="@+id/txtTempoSeduteSettimanali"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                            <!-- Riga Corsa -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="12dp"
+                                android:background="@drawable/stat_item_background"
+                                android:padding="12dp"
+                                android:tag="animatable">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical">
+
+                                    <ImageView
+                                        android:layout_width="28dp"
+                                        android:layout_height="29dp"
+                                        android:src="@drawable/directions_run_24px"
+                                        app:tint="@color/colorCorrere" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="18dp"
+                                        android:text="Corsa Settimanale"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <Space
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:id="@+id/txtDistanzaCorsaSettimanale"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="24sp"
+                                        android:text="0 km"/>
+
+                                    <TextView
+                                        android:id="@+id/txtTempoCorsaSettimanale"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!-- Riga Guida -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="12dp"
+                                android:background="@drawable/stat_item_background"
+                                android:padding="12dp"
+                                android:tag="animatable">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical">
+
+                                    <ImageView
+                                        android:layout_width="28dp"
+                                        android:layout_height="28dp"
+                                        android:src="@drawable/directions_car"
+                                        app:tint="@color/colorGuidare" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="18dp"
+                                        android:text="Guida Settimanale"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"/>
+                                </LinearLayout>
+
+                                <Space
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="end">
+
+                                    <TextView
+                                        android:id="@+id/txtDistanzaGuidaSettimanale"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="24sp"
+                                        android:text="0 km"/>
+
+                                    <TextView
+                                        android:id="@+id/txtTempoGuidaSettimanale"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!-- Obiettivi a Ciambella -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                android:background="@drawable/rounded_background2_stats"
+                                android:padding="8dp"
+                                android:tag="stats">
+
+                                <!-- Obiettivo Passi -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:gravity="center">
+                                    <FrameLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                                            android:id="@+id/progressPassi"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            app:indicatorSize="100dp"
+                                            app:trackThickness="8dp"
+                                            app:trackColor="#33FFFFFF"
+                                            app:indicatorColor="@color/colorCamminare"/>
+
+                                        <ImageView
+                                            android:layout_width="80dp"
+                                            android:layout_height="80dp"
+                                            android:src="@drawable/star_24dp"
+                                            android:tag="sempre_scuro"
+                                            android:layout_gravity="center"
+                                            app:tint="@color/stat_item_background"/>
+                                    </FrameLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Obiettivo Passi"
+                                        android:textSize="12sp"/>
+
+                                    <TextView
+                                        android:id="@+id/txtProgressPassiLabel"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textSize="14sp"
+                                        android:textColor="@android:color/black"
+                                        android:text="0 / 10000" />
+                                </LinearLayout>
+
+                                <!-- Obiettivo Sedute -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:gravity="center">
+                                    <FrameLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                                            android:id="@+id/progressSedute"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            app:indicatorSize="100dp"
+                                            app:trackThickness="8dp"
+                                            app:trackColor="#33FFFFFF"
+                                            app:indicatorColor="@color/colorSedersi"/>
+                                        <ImageView
+                                            android:layout_width="80dp"
+                                            android:layout_height="80dp"
+                                            android:src="@drawable/star_24dp"
+                                            android:tag="sempre_scuro"
+                                            android:layout_gravity="center"
+                                            app:tint="@color/stat_item_background"/>
+                                    </FrameLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Obiettivo Sedute"
+                                        android:textSize="12sp"/>
+
+                                    <TextView
+                                        android:id="@+id/txtProgressSeduteLabel"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textSize="14sp"
+                                        android:textColor="@android:color/black"
+                                        android:text="0h / 8h" />
+                                </LinearLayout>
+
+                                <!-- Obiettivo Corsa -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:gravity="center">
+                                    <FrameLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <com.google.android.material.progressindicator.CircularProgressIndicator
+                                            android:id="@+id/progressCorsa"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            app:indicatorSize="100dp"
+                                            app:trackThickness="8dp"
+                                            app:trackColor="#33FFFFFF"
+                                            app:indicatorColor="@color/colorCorrere"/>
+                                        <ImageView
+                                            android:layout_width="80dp"
+                                            android:layout_height="80dp"
+                                            android:tag="sempre_scuro"
+                                            android:src="@drawable/star_24dp"
+                                            android:layout_gravity="center"
+                                            app:tint="@color/stat_item_background"/>
+                                    </FrameLayout>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Obiettivo Corsa"
+                                        android:textSize="12sp"/>
+
+                                    <TextView
+                                        android:id="@+id/txtProgressCorsaLabel"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textSize="14sp"
+                                        android:textColor="@android:color/black"
+                                        android:text="0 / 5km" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+
+                            <LinearLayout
+                                android:id="@+id/chartContainer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="28dp"
+                                android:orientation="vertical">
+
+                                <com.example.mover.CustomHorizontalScrollView
+                                    android:id="@+id/chartsScrollView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fillViewport="true"
+                                    android:scrollbars="none">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:paddingStart="0dp"
+                                        android:paddingEnd="0dp"
+                                        android:clipToPadding="false">
+
+                                        <!-- Container per il primo grafico -->
+                                        <LinearLayout
+                                            android:layout_width="@dimen/chart_width"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:background="@drawable/rounded_background2_charts"
+                                            android:padding="8dp"
+                                            android:layout_marginStart="0dp"
+                                            android:layout_marginEnd="8dp"
+                                            android:tag="charts">
+
+
+
+                                            <com.example.mover.RoundedBarChart
+                                                android:id="@+id/walkingChart"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="240dp"/>
+
+                                            <TextView
+                                                android:id="@+id/walkingChartTitle"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="Passi della settimana"
+                                                android:textAlignment="center"
+                                                android:textSize="14sp"
+                                                android:textColor="@color/calendar_week_number"
+                                                android:fontFamily="@font/roboto_medium"
+                                                android:layout_marginTop="0dp"
+                                                android:layout_marginBottom="4dp"/>
+                                        </LinearLayout>
+
+                                        <!-- Container per il secondo grafico -->
+                                        <LinearLayout
+                                            android:layout_width="@dimen/chart_width"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:background="@drawable/rounded_background2_charts"
+                                            android:padding="8dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="8dp"
+                                            android:tag="charts">
+
+                                            <com.example.mover.RoundedBarChart
+                                                android:id="@+id/runningChart"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="240dp"/>
+
+                                            <TextView
+                                                android:id="@+id/runningChartTitle"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="Corsa della settimana"
+                                                android:textAlignment="center"
+                                                android:textSize="14sp"
+                                                android:textColor="@color/calendar_week_number"
+                                                android:fontFamily="@font/roboto_medium"
+                                                android:layout_marginTop="0dp"
+                                                android:layout_marginBottom="4dp"/>
+                                        </LinearLayout>
+
+                                        <!-- Container per il terzo grafico -->
+                                        <LinearLayout
+                                            android:layout_width="@dimen/chart_width"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:background="@drawable/rounded_background2_charts"
+                                            android:padding="8dp"
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="0dp"
+                                            android:tag="charts">
+
+
+                                            <com.example.mover.RoundedBarChart
+                                                android:id="@+id/sittingChart"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="240dp"/>
+                                            <TextView
+                                                android:id="@+id/sittingChartTitle"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="Sedute della settimana"
+                                                android:textAlignment="center"
+                                                android:textSize="14sp"
+                                                android:textColor="@color/calendar_week_number"
+                                                android:fontFamily="@font/roboto_medium"
+                                                android:layout_marginTop="0dp"
+                                                android:layout_marginBottom="4dp"/>
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </com.example.mover.CustomHorizontalScrollView>
+
+                                <!-- Indicatori di pagina -->
+                                <LinearLayout
+                                    android:id="@+id/pageIndicators"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="8dp"
+                                    android:orientation="horizontal"
+                                    android:spacing="8dp"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/bestRecordsContainer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_horizontal"
+                                android:paddingVertical="10dp"
+                                android:tag="records"
+                                android:layout_marginTop="24dp"
+                                app:layout_constraintTop_toBottomOf="@id/activityChartFrame"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:background="@drawable/rounded_background2_records">
+
+                                <!-- Star Record Run -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <FrameLayout
+                                        android:layout_width="90dp"
+                                        android:layout_height="90dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:src="@drawable/trophy_24dp"
+                                            android:tag="sempre_scuro"
+                                            android:padding="16dp"
+                                            android:background="@drawable/badge_square"/>
+
+                                        <ImageView
+                                            android:layout_width="16dp"
+                                            android:layout_height="16dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginBottom="8dp"
+                                            android:src="@drawable/directions_run_24px"
+                                            app:tint="@color/colorrecords2" />
+                                    </FrameLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="MVP CORSA"
+                                        android:textStyle="bold"
+                                        android:textSize="12sp"
+                                        android:textColor="@color/colorCorrere"
+                                        android:layout_marginTop="4dp"/>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:gravity="center"
+                                        android:layout_marginTop="4dp">
+
+                                        <TextView
+                                            android:id="@+id/bestRunDate"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/bestRunValue"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="11sp"
+                                            android:textColor="@color/colorCorrere"
+                                            android:layout_marginTop="4dp"/>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <!-- Star Record Walk -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <FrameLayout
+                                        android:layout_width="90dp"
+                                        android:layout_height="90dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:src="@drawable/trophy_24dp"
+                                            android:padding="16dp"
+                                            android:tag="sempre_scuro"
+                                            android:background="@drawable/badge_square"/>
+
+                                        <ImageView
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginBottom="8dp"
+                                            android:src="@drawable/footprint_24px"
+                                            app:tint="@color/colorrecords2" />
+                                    </FrameLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="MVP CAMMINATA"
+                                        android:textStyle="bold"
+                                        android:textSize="12sp"
+                                        android:textColor="@color/colorCamminare"
+                                        android:layout_marginTop="8dp"/>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:gravity="center"
+                                        android:layout_marginTop="4dp">
+
+                                        <TextView
+                                            android:id="@+id/bestWalkDate"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/bestWalkValue"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="11sp"
+                                            android:textColor="@color/colorCamminare"
+                                            android:layout_marginTop="4dp"/>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <!-- Star Record Drive -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <FrameLayout
+                                        android:layout_width="90dp"
+                                        android:layout_height="90dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:src="@drawable/trophy_24dp"
+                                            android:padding="16dp"
+                                            android:tag="sempre_scuro"
+                                            android:background="@drawable/badge_square"/>
+
+                                        <ImageView
+                                            android:layout_width="16dp"
+                                            android:layout_height="16dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginBottom="8dp"
+                                            android:src="@drawable/directions_car"
+                                            app:tint="@color/colorrecords2" />
+                                    </FrameLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="MVP GUIDA"
+                                        android:textStyle="bold"
+                                        android:textSize="12sp"
+                                        android:textColor="@color/colorGuidare"
+                                        android:layout_marginTop="8dp"/>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:gravity="center"
+                                        android:layout_marginTop="4dp">
+
+                                        <TextView
+                                            android:id="@+id/bestDriveDate"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/bestDriveValue"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:textSize="11sp"
+                                            android:textColor="@color/colorGuidare"
+                                            android:layout_marginTop="4dp"/>
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <FrameLayout
+            android:id="@+id/rootFrameLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top">
+
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                tools:visibility="visible"
+                android:elevation="0dp"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:visibility="visible"
+                    >
+
+                    <!-- Titolo Centrato -->
+                    <ImageView
+                        android:id="@+id/actionBarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/coin"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:layout_centerInParent="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </FrameLayout>
+
+
+        <View
+            android:id="@+id/gradientView"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@drawable/gradient_stroico_top"
+            android:visibility="invisible"
+            app:layout_anchor="@id/toolbar"
+            app:layout_anchorGravity="bottom" />
+
+
+
+        <!-- Overlay View -->
+
+        <View
+            android:id="@+id/overlayView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#D8000000"
+            android:visibility="gone" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/bottomButtonsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="130dp"
+            android:layout_marginEnd="130dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="36dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:id="@+id/bottomButtonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:background="@color/colore_fab2">
+
+                <!-- Bottone Home -->
+                <FrameLayout
+                    android:id="@+id/homeContainer"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/custum_circle_main_back">
+                    <ImageButton
+                        android:id="@+id/btnHome"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/home_24dp"
+                        android:contentDescription="Home"
+                        app:tint="@color/colore_fab2"/>
+                </FrameLayout>
+
+                <!-- Bottone Storico -->
+                <FrameLayout
+                    android:id="@+id/storicoContainer"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="4dp">  <!-- Aumentato il margine -->
+                    <ImageButton
+                        android:id="@+id/btnStorico"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/browse_activity_24dp"
+                        android:contentDescription="Storico Attività"
+                        app:tint="@color/colore_fab"/>
+                </FrameLayout>
+
+
+                <!-- Bottone Impostazioni -->
+                <FrameLayout
+                    android:id="@+id/settingsContainer"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp">
+                    <ImageButton
+                        android:id="@+id/btnSettings"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/settings_24dp"
+                        android:contentDescription="Impostazioni"
+                        app:tint="@color/colore_fab"/>
+                </FrameLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <!-- Floating Action Buttons -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="42dp"
+            android:backgroundTint="@color/colore_fab"
+            android:elevation="0dp"
+            android:src="@drawable/play_arrow_24dp"
+            app:tint="@color/white" />
+
+        <!-- FAB Interrompi (invisibile di default) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_interrompi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="42dp"
+            android:backgroundTint="#FD5959"
+            android:elevation="0dp"
+            android:src="@android:drawable/ic_media_pause"
+            android:visibility="gone"
+            app:rippleColor="#FFFFFF"
+            app:tint="@color/white" />
+
+        <!-- Layout per pulsanti aggiuntivi (walk, run, drive, sit) -->
+        <LinearLayout
+            android:id="@+id/layout_walk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="100dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Camminare"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_walk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorCamminare"
+                android:padding="30dp"
+                android:src="@drawable/footprint_24px"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_run"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="160dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Correre"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorCorrere"
+                android:elevation="0dp"
+                android:padding="30dp"
+                android:src="@drawable/directions_run_24px"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_drive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="225dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Guidare"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_drive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorGuidare"
+                android:padding="30dp"
+                android:src="@drawable/directions_car" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_sit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="42dp"
+            android:layout_marginBottom="285dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Sedersi"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_sit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorSedersi"
+                android:padding="30dp"
+                android:src="@drawable/seat_24px" />
+        </LinearLayout>
+        <!-- Aggiungi alla fine del layout principale -->
+        <include
+            android:id="@+id/confirmationCard"
+            layout="@layout/bottom_confirmation_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="bottom"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

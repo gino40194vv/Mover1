@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mover</string>
+    <string-array name="tipi_grafico">
+            <item>Grafico a Barre</item>
+            <item>Grafico a Torta</item>
+        </string-array>
+    <string name="channel_name">Obiettivi</string>
+    <string name="channel_description">Notifica per obiettivi raggiunti</string>
+</resources>
