@@ -55,14 +55,14 @@ interface ObiettiviDao {
     suspend fun deleteObiettivo(obiettivo: Obiettivo)
     
     // === PROGRESSI OBIETTIVI ===
-    @Query("SELECT * FROM progressi_obiettivo WHERE obiettivoId = :obiettivoId ORDER BY data DESC")
+    @Query("SELECT * FROM progresso_obiettivo WHERE obiettivoId = :obiettivoId ORDER BY dataAggiornamento DESC")
     fun getProgressiObiettivo(obiettivoId: String): Flow<List<ProgressoObiettivo>>
     
     @Query("""
-        SELECT * FROM progressi_obiettivo 
+        SELECT * FROM progresso_obiettivo 
         WHERE obiettivoId = :obiettivoId 
-        AND data BETWEEN :dataInizio AND :dataFine 
-        ORDER BY data ASC
+        AND dataAggiornamento BETWEEN :dataInizio AND :dataFine 
+        ORDER BY dataAggiornamento ASC
     """)
     fun getProgressiObiettivoPerPeriodo(
         obiettivoId: String, 
@@ -71,17 +71,19 @@ interface ObiettiviDao {
     ): Flow<List<ProgressoObiettivo>>
     
     @Query("""
-        SELECT SUM(valoreAggiunto) 
-        FROM progressi_obiettivo 
+        SELECT valoreAttuale 
+        FROM progresso_obiettivo 
         WHERE obiettivoId = :obiettivoId
     """)
     suspend fun getProgressoTotaleObiettivo(obiettivoId: String): Double?
     
     @Query("""
-        SELECT SUM(valoreAggiunto) 
-        FROM progressi_obiettivo 
+        SELECT valoreAttuale 
+        FROM progresso_obiettivo 
         WHERE obiettivoId = :obiettivoId 
-        AND data BETWEEN :dataInizio AND :dataFine
+        AND dataAggiornamento BETWEEN :dataInizio AND :dataFine
+        ORDER BY dataAggiornamento DESC
+        LIMIT 1
     """)
     suspend fun getProgressoObiettivoPerPeriodo(
         obiettivoId: String, 
@@ -102,12 +104,15 @@ interface ObiettiviDao {
     suspend fun deleteProgressoObiettivo(progresso: ProgressoObiettivo)
     
     // === NOTIFICHE OBIETTIVI ===
-    @Query("SELECT * FROM notifiche_obiettivo WHERE obiettivoId = :obiettivoId ORDER BY dataInvio DESC")
+    // Temporarily commented out due to table creation issues
+    /*
+    @Query("SELECT * FROM notifiche_obiettivo WHERE obiettivoId = :obiettivoId ORDER BY dataCreazione DESC")
     fun getNotificheObiettivo(obiettivoId: String): Flow<List<NotificaObiettivo>>
 
     // Simplified queries to avoid JOIN issues
-    @Query("SELECT * FROM notifiche_obiettivo WHERE isLetta = 0 ORDER BY dataInvio DESC")
+    @Query("SELECT * FROM notifiche_obiettivo WHERE isLetta = 0 ORDER BY dataCreazione DESC")
     fun getNotificheNonLette(): Flow<List<NotificaObiettivo>>
+    */
 
     @Query("SELECT COUNT(*) FROM notifiche_obiettivo WHERE isLetta = 0")
     suspend fun getNumeroNotificheNonLette(): Int
@@ -145,15 +150,11 @@ interface ObiettiviDao {
     // === OBIETTIVI CON PROGRESSI ===
     @Query("""
         SELECT o.*, 
-               COALESCE(SUM(po.valoreAggiunto), 0) as progressoTotale,
-               CASE 
-                   WHEN o.valoreTarget > 0 THEN (COALESCE(SUM(po.valoreAggiunto), 0) * 100.0 / o.valoreTarget)
-                   ELSE 0 
-               END as percentualeCalcolata
+               COALESCE(po.valoreAttuale, 0) as progressoTotale,
+               COALESCE(po.percentualeCompletamento, 0) as percentualeCalcolata
         FROM obiettivi o
-        LEFT JOIN progressi_obiettivo po ON o.id = po.obiettivoId
+        LEFT JOIN progresso_obiettivo po ON o.id = po.obiettivoId
         WHERE o.utenteId = :utenteId AND o.isAttivo = 1
-        GROUP BY o.id
         ORDER BY o.dataCreazione DESC
     """)
     fun getObiettiviConProgressi(utenteId: String): Flow<List<ObiettivoConProgresso>>

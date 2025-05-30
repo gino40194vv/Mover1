@@ -6,6 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.mover.data.Attività
 import java.util.Date
+import com.example.mover.database.entities.TipoNotificaObiettivo
 
 @Entity(
     tableName = "obiettivi",
@@ -153,12 +154,4 @@ enum class FrequenzaNotifica {
     NESSUNA         // Nessuna notifica
 }
 
-enum class TipoNotificaObiettivo {
-    PROMEMORIA,         // Promemoria per allenarsi
-    PROGRESSO,          // Aggiornamento progresso
-    INCORAGGIAMENTO,    // Messaggio motivazionale
-    TRAGUARDO,          // Traguardo raggiunto
-    COMPLETAMENTO,      // Obiettivo completato
-    SCADENZA,           // Obiettivo in scadenza
-    SUGGERIMENTO        // Suggerimento per migliorare
-}
+

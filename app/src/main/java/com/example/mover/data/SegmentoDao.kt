@@ -87,82 +87,85 @@ interface SegmentoDao {
     @Update
     suspend fun aggiornaTentativo(tentativo: TentativoSegmento)
     
-    @Query("SELECT * FROM tentativi_segmento WHERE segmentoId = :segmentoId ORDER BY tempo ASC")
-    suspend fun getTentativiPerSegmento(segmentoId: Long): List<TentativoSegmento>
+    @Query("SELECT * FROM tentativi_segmento WHERE segmentoId = :segmentoId ORDER BY tempoImpiegato ASC")
+    suspend fun getTentativiPerSegmento(segmentoId: String): List<TentativoSegmento>
     
     @Query("""
         SELECT * FROM tentativi_segmento 
         WHERE segmentoId = :segmentoId 
-        AND atleta = :atleta 
-        ORDER BY tempo ASC 
+        AND utenteId = :utenteId 
+        ORDER BY tempoImpiegato ASC 
         LIMIT 1
     """)
-    suspend fun getMigliorTentativoAtleta(segmentoId: Long, atleta: String): TentativoSegmento?
+    suspend fun getMigliorTentativoAtleta(segmentoId: String, utenteId: String): TentativoSegmento?
     
     @Query("""
         SELECT * FROM tentativi_segmento 
         WHERE segmentoId = :segmentoId 
-        AND atleta = :atleta 
-        ORDER BY dataCompletamento DESC
+        AND utenteId = :utenteId 
+        ORDER BY dataOra DESC
     """)
-    suspend fun getTentativiAtletaPerSegmento(segmentoId: Long, atleta: String): List<TentativoSegmento>
+    suspend fun getTentativiAtletaPerSegmento(segmentoId: String, utenteId: String): List<TentativoSegmento>
     
     @Query("""
         SELECT * FROM tentativi_segmento 
         WHERE segmentoId = :segmentoId 
-        ORDER BY tempo ASC 
+        ORDER BY tempoImpiegato ASC 
         LIMIT 1
     """)
-    suspend fun getRecordSegmento(segmentoId: Long): TentativoSegmento?
+    suspend fun getRecordSegmento(segmentoId: String): TentativoSegmento?
     
     @Query("""
         SELECT * FROM tentativi_segmento 
-        WHERE atleta = :atleta 
-        AND posizionePR = 1 
-        ORDER BY dataCompletamento DESC
+        WHERE utenteId = :utenteId 
+        AND isPR = 1 
+        ORDER BY dataOra DESC
     """)
-    suspend fun getPersonalRecords(atleta: String): List<TentativoSegmento>
+    suspend fun getPersonalRecords(utenteId: String): List<TentativoSegmento>
     
     @Query("""
         SELECT * FROM tentativi_segmento 
-        WHERE atleta = :atleta 
-        AND posizioneKOM = 1 
-        ORDER BY dataCompletamento DESC
+        WHERE utenteId = :utenteId 
+        AND isKOM = 1 
+        ORDER BY dataOra DESC
     """)
-    suspend fun getKOMQOM(atleta: String): List<TentativoSegmento>
+    suspend fun getKOMQOM(utenteId: String): List<TentativoSegmento>
     
     // ==================== CLASSIFICHE ====================
     
     @Insert
     suspend fun inserisciClassifica(classifica: ClassificaSegmento)
     
-    @Query("DELETE FROM classifiche_segmento WHERE segmentoId = :segmentoId")
-    suspend fun eliminaClassificheSegmento(segmentoId: Long)
+    // Temporarily commented out due to table creation issues
+    /*
+    @Query("DELETE FROM classifica_segmento WHERE segmentoId = :segmentoId")
+    suspend fun eliminaClassificheSegmento(segmentoId: String)
     
     @Query("""
-        SELECT * FROM classifiche_segmento 
+        SELECT * FROM classifica_segmento 
         WHERE segmentoId = :segmentoId 
         AND categoria = :categoria 
         ORDER BY posizione ASC 
         LIMIT :limite
     """)
     suspend fun getClassificaSegmento(
-        segmentoId: Long, 
+        segmentoId: String, 
         categoria: String = "generale", 
         limite: Int = 100
     ): List<ClassificaSegmento>
     
     @Query("""
-        SELECT posizione FROM classifiche_segmento 
+        SELECT posizione FROM classifica_segmento 
         WHERE segmentoId = :segmentoId 
-        AND atleta = :atleta 
+        AND utenteId = :utenteId 
         AND categoria = :categoria
     """)
     suspend fun getPosizioneAtleta(
-        segmentoId: Long, 
-        atleta: String, 
+        segmentoId: String, 
+        utenteId: String, 
         categoria: String = "generale"
     ): Int?
+    */
     
     // ==================== STATISTICHE AVANZATE ====================
     
@@ -170,49 +173,49 @@ interface SegmentoDao {
         SELECT COUNT(*) FROM tentativi_segmento 
         WHERE segmentoId = :segmentoId
     """)
-    suspend fun getNumeroTentativiSegmento(segmentoId: Long): Int
+    suspend fun getNumeroTentativiSegmento(segmentoId: String): Int
     
     @Query("""
-        SELECT COUNT(DISTINCT atleta) FROM tentativi_segmento 
+        SELECT COUNT(DISTINCT utenteId) FROM tentativi_segmento 
         WHERE segmentoId = :segmentoId
     """)
-    suspend fun getNumeroAtletiSegmento(segmentoId: Long): Int
+    suspend fun getNumeroAtletiSegmento(segmentoId: String): Int
     
     @Query("""
-        SELECT AVG(tempo) FROM tentativi_segmento 
+        SELECT AVG(tempoImpiegato) FROM tentativi_segmento 
         WHERE segmentoId = :segmentoId
     """)
-    suspend fun getTempoMedioSegmento(segmentoId: Long): Float?
+    suspend fun getTempoMedioSegmento(segmentoId: String): Float?
     
     @Query("""
         SELECT AVG(velocitaMedia) FROM tentativi_segmento 
         WHERE segmentoId = :segmentoId 
         AND velocitaMedia IS NOT NULL
     """)
-    suspend fun getVelocitaMediaSegmento(segmentoId: Long): Float?
+    suspend fun getVelocitaMediaSegmento(segmentoId: String): Float?
     
     // ==================== ANALISI PRESTAZIONI ====================
     
     @Query("""
         SELECT * FROM tentativi_segmento 
-        WHERE atleta = :atleta 
-        AND dataCompletamento BETWEEN :dataInizio AND :dataFine
-        ORDER BY dataCompletamento DESC
+        WHERE utenteId = :utenteId 
+        AND dataOra BETWEEN :dataInizio AND :dataFine
+        ORDER BY dataOra DESC
     """)
     suspend fun getTentativiAtletaPerPeriodo(
-        atleta: String, 
+        utenteId: String, 
         dataInizio: Long, 
         dataFine: Long
     ): List<TentativoSegmento>
     
     @Query("""
         SELECT COUNT(*) FROM tentativi_segmento 
-        WHERE atleta = :atleta 
-        AND posizionePR = 1 
-        AND dataCompletamento BETWEEN :dataInizio AND :dataFine
+        WHERE utenteId = :utenteId 
+        AND posizione = 1 
+        AND dataOra BETWEEN :dataInizio AND :dataFine
     """)
     suspend fun getNumeroPersonalRecordsPerPeriodo(
-        atleta: String, 
+        utenteId: String, 
         dataInizio: Long, 
         dataFine: Long
     ): Int
@@ -228,14 +231,14 @@ interface SegmentoDao {
                s.latitudineFine as segmento_latitudineFine, s.longitudineFine as segmento_longitudineFine,
                s.difficolta as segmento_difficolta, s.stelle as segmento_stelle, s.pubblico as segmento_pubblico,
                s.creatore as segmento_creatore, s.dataCreazione as segmento_dataCreazione, s.numeroTentativi as segmento_numeroTentativi,
-               t.tempo as migliorTempo, t.dataCompletamento as dataMigliorTempo
+               t.tempo as migliorTempo, t.dataOra as dataMigliorTempo
         FROM segmenti s
         INNER JOIN tentativi_segmento t ON s.id = t.segmentoId
         WHERE t.atleta = :atleta
-        AND t.posizionePR = 1
-        ORDER BY t.dataCompletamento DESC
+        AND t.posizione = 1
+        ORDER BY t.dataOra DESC
     """)
-    suspend fun getSegmentiConPersonalRecord(atleta: String): List<SegmentoConRecord>
+    suspend fun getSegmentiConPersonalRecord(utenteId: String): List<SegmentoConRecord>
     */
     
     // ==================== TRANSAZIONI COMPLESSE ====================
@@ -252,7 +255,7 @@ interface SegmentoDao {
     }
     
     @Transaction
-    suspend fun aggiornaClassificheSegmento(segmentoId: Long) {
+    suspend fun aggiornaClassificheSegmento(segmentoId: String) {
         // Elimina classifiche esistenti
         eliminaClassificheSegmento(segmentoId)
         
@@ -263,7 +266,7 @@ interface SegmentoDao {
             val classifica = ClassificaSegmento(
                 segmentoId = segmentoId,
                 tentativoId = tentativo.id,
-                atleta = tentativo.atleta,
+                utenteId = tentativo.utenteId,
                 categoria = "generale",
                 posizione = index + 1,
                 tempo = tentativo.tempo,

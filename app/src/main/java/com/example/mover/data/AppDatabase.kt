@@ -7,8 +7,19 @@ import androidx.room.TypeConverters
 import android.content.Context
 import com.example.mover.database.entities.*
 import com.example.mover.database.dao.*
+import com.example.mover.data.Converters
+import com.example.mover.data.AnalisiPrestazioniDao
 // Explicit imports for entities in data package
-import com.example.mover.database.Converters
+import com.example.mover.data.Attività
+import com.example.mover.data.PuntoGPS
+import com.example.mover.data.SegmentoAttività
+import com.example.mover.data.Segmento
+import com.example.mover.data.TentativoSegmento
+import com.example.mover.data.ClassificaSegmento
+import com.example.mover.data.FitnessFreshness
+import com.example.mover.data.AnalisiZone
+import com.example.mover.data.AnalisiPassoGara
+import com.example.mover.data.MetrichePerformance
 
 @Database(
     entities = [

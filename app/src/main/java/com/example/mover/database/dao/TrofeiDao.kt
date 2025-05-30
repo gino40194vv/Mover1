@@ -38,36 +38,36 @@ interface TrofeiDao {
     
     // === TROFEI UTENTE ===
     @Query("""
-        SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valore, tu.condiviso, tu.visibile
+        SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valoreRaggiunto, tu.condiviso, tu.visibile
         FROM trofei t 
-        INNER JOIN trofei_utente tu ON t.id = tu.trofeoId 
+        INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId 
         WHERE tu.utenteId = :utenteId AND tu.visibile = 1
         ORDER BY tu.dataOttenimento DESC
     """)
     fun getTrofeiUtente(utenteId: String): Flow<List<TrofeoConDettagli>>
     
     @Query("""
-        SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valore, tu.condiviso, tu.visibile
+        SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valoreRaggiunto, tu.condiviso, tu.visibile
         FROM trofei t 
-        INNER JOIN trofei_utente tu ON t.id = tu.trofeoId 
+        INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId 
         WHERE tu.utenteId = :utenteId AND t.categoria = :categoria AND tu.visibile = 1
         ORDER BY tu.dataOttenimento DESC
     """)
     fun getTrofeiUtentePerCategoria(utenteId: String, categoria: CategoriaTrofeo): Flow<List<TrofeoConDettagli>>
     
     @Query("""
-        SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valore, tu.condiviso, tu.visibile
+        SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valoreRaggiunto, tu.condiviso, tu.visibile
         FROM trofei t 
-        INNER JOIN trofei_utente tu ON t.id = tu.trofeoId 
+        INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId 
         WHERE tu.utenteId = :utenteId AND t.livello = :livello AND tu.visibile = 1
         ORDER BY tu.dataOttenimento DESC
     """)
     fun getTrofeiUtentePerLivello(utenteId: String, livello: LivelloTrofeo): Flow<List<TrofeoConDettagli>>
     
-    @Query("SELECT * FROM trofei_utente WHERE trofeoId = :trofeoId AND utenteId = :utenteId")
+    @Query("SELECT * FROM trofeo_utente WHERE trofeoId = :trofeoId AND utenteId = :utenteId")
     suspend fun getTrofeoUtente(trofeoId: String, utenteId: String): TrofeoUtente?
     
-    @Query("SELECT COUNT(*) FROM trofei_utente WHERE utenteId = :utenteId")
+    @Query("SELECT COUNT(*) FROM trofeo_utente WHERE utenteId = :utenteId")
     suspend fun getNumeroTrofeiUtente(utenteId: String): Int
     
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -102,26 +102,24 @@ interface TrofeiDao {
     suspend fun deleteClassificaTrofeo(classifica: ClassificaTrofeo)
     
     // === QUERY STATISTICHE ===
-    @Query("SELECT SUM(t.punti) FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId")
+    @Query("SELECT SUM(t.punti) FROM trofei t INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId")
     suspend fun getPuntiTotaliTrofei(utenteId: String): Int?
 
-    @Query("SELECT livello, COUNT(*) as count FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId GROUP BY livello ORDER BY count DESC")
+    @Query("SELECT livello, COUNT(*) as count FROM trofei t INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId GROUP BY livello ORDER BY count DESC")
     suspend fun getTrofeiPerLivelloUtente(utenteId: String): List<LivelloTrofeoConConteggio>
 
-    @Query("SELECT categoria, COUNT(*) as count FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId GROUP BY categoria ORDER BY count DESC")
+    @Query("SELECT categoria, COUNT(*) as count FROM trofei t INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId GROUP BY categoria ORDER BY count DESC")
     suspend fun getTrofeiPerCategoriaUtente(utenteId: String): List<CategoriaTrofeoConConteggio>
 
-    @Query("SELECT t.*, tu.dataOttenimento FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId ORDER BY tu.dataOttenimento DESC LIMIT 1")
-    @Query("SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valore, tu.condiviso, tu.visibile FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId ORDER BY tu.dataOttenimento DESC LIMIT 1")
-    @Query("SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valore FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId ORDER BY t.rarità DESC, tu.dataOttenimento DESC LIMIT 5")
+    @Query("SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valoreRaggiunto, tu.condiviso, tu.visibile FROM trofei t INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId ORDER BY t.rarità DESC, tu.dataOttenimento DESC LIMIT 5")
     suspend fun getTrofeiPiuRari(utenteId: String): List<TrofeoConDettagli>
-    @Query("SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valore, tu.condiviso, tu.visibile FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId ORDER BY t.rarità DESC, tu.dataOttenimento DESC LIMIT 5")
+    
     // === TROFEI RECENTI COMMUNITY ===
-    @Query("SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valore, u.nomeCompleto, u.immagineProfilo FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId INNER JOIN utenti u ON tu.utenteId = u.id WHERE tu.condiviso = 1 ORDER BY tu.dataOttenimento DESC LIMIT :limit")
+    @Query("SELECT t.*, tu.dataOttenimento, tu.posizione, tu.valoreRaggiunto, u.nomeCompleto, u.immagineProfilo FROM trofei t INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId INNER JOIN utenti u ON tu.utenteId = u.id WHERE tu.condiviso = 1 ORDER BY tu.dataOttenimento DESC LIMIT :limit")
     suspend fun getTrofeiRecentiCommunity(limit: Int = 20): List<TrofeoConUtenteDettagli>
     
     // === STATISTICHE COMPLETE ===
-    @Query("SELECT COUNT(*) as totaliOttenuti, SUM(t.punti) as puntiTotali FROM trofei t INNER JOIN trofei_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId")
+    @Query("SELECT COUNT(*) as totaliOttenuti, SUM(t.punti) as puntiTotali FROM trofei t INNER JOIN trofeo_utente tu ON t.id = tu.trofeoId WHERE tu.utenteId = :utenteId")
     suspend fun getStatisticheTrofeiUtente(utenteId: String): StatisticheTrofeiSemplificata?
 }
 
@@ -143,7 +141,7 @@ data class TrofeoConDettagli(
     val ordinamento: Int,
     val dataOttenimento: Date,
     val posizione: Int?,
-    val valore: Double?,
+    val valoreRaggiunto: Double?,
     val condiviso: Boolean,
     val visibile: Boolean
 )
@@ -165,7 +163,7 @@ data class TrofeoConUtenteDettagli(
     val ordinamento: Int,
     val dataOttenimento: Date,
     val posizione: Int?,
-    val valore: Double?,
+    val valoreRaggiunto: Double?,
     val nomeCompleto: String,
     val immagineProfilo: String?
 )
